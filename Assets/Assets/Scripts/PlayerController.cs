@@ -16,11 +16,14 @@ public class PlayerController : MonoBehaviour
         Vector3 scale = transform.localScale;
 
         animator.SetFloat("SpeedX", Mathf.Abs(_speedX));
-        //animator.SetFloat("SpeedY", _speedY);
 
         if (Input.GetKey(KeyCode.LeftShift))
             animator.SetBool("IsRunning", true);
         else animator.SetBool("IsRunning", false);
+
+        if (Input.GetKey(KeyCode.Space))
+            animator.SetBool("IsJumping", true);
+        else animator.SetBool("IsJumping", false);
 
         /*if (Input.GetKey(KeyCode.LeftControl))
             animator.SetBool("IsCrouching", true);
