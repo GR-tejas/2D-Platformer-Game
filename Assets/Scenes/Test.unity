@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 232157542}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -248,7 +248,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.853, z: 0.063946694}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10.85, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -256,6 +256,12 @@ Transform:
 --- !u!1 &538691311 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4459506317024531637, guid: 821e98bb67cd59447a1acfe7d7c219fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 8523094869944250728}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &538691314 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5152114407746969444, guid: 821e98bb67cd59447a1acfe7d7c219fb,
     type: 3}
   m_PrefabInstance: {fileID: 8523094869944250728}
   m_PrefabAsset: {fileID: 0}
@@ -318,7 +324,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -503,9 +509,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6628323334242602210, guid: 821e98bb67cd59447a1acfe7d7c219fb,
         type: 3}
+      propertyPath: _rb
+      value: 
+      objectReference: {fileID: 538691317}
+    - target: {fileID: 6628323334242602210, guid: 821e98bb67cd59447a1acfe7d7c219fb,
+        type: 3}
       propertyPath: playerCollider
       value: 
       objectReference: {fileID: 538691316}
+    - target: {fileID: 6628323334242602210, guid: 821e98bb67cd59447a1acfe7d7c219fb,
+        type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 538691314}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
