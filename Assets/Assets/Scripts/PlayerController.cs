@@ -5,13 +5,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Animator animator; // Reference to the Animator
+    private Rigidbody2D _rb; // Reference to the Rigidbody2D
+
+
     public float walkSpeed = 5f; // Speed while walking
     public float runSpeed = 10f; // Speed while running
     public float jumpForce = 400f; // Force applied for jumping
-
     private float _speedX; // For movement input
+
     private bool isGrounded; // To detect if the player is on the ground
-    private Rigidbody2D _rb; // Reference to the Rigidbody2D
+    private bool isJumping;
 
     void Start()
     {
@@ -35,22 +38,23 @@ public class PlayerController : MonoBehaviour
         _rb.velocity = newPosition; // Update velocity for movement
 
         // Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) // Only jump if grounded
+        if (Input.GetKeyDown(KeyCode.Space) /*&& IsGrounded()*/) // Only jump if grounded
         {
+            PlayerJump();
             _rb.AddForce(new Vector2(0f, jumpForce)); // Apply an upward force for jumping
-            animator.SetBool("IsJumping", true); // Set jump animation
+            // Set jump animation
         }
-        else
+        if (!isGrounded)
+            animator.SetBool("IsJumping", true);
+
+        if (/*isJumping &&*/ IsGrounded())
         {
-            // Reset jump state if the player is grounded
-            if (IsGrounded())
-            {
-                animator.SetBool("IsJumping", false); // Reset jump animation
-            }
+            isJumping = false;
+            animator.SetBool("IsJumping", false);
         }
 
         // Crouching
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.LeftControl) && IsGrounded())
         {
             animator.SetBool("IsCrouching", true);
         }
@@ -62,6 +66,14 @@ public class PlayerController : MonoBehaviour
 
     private void HandleAnimation()
     {
+        Vector3 scale = transform.localScale;
+
+        if (_speedX != 0)
+        {
+            scale.x = Mathf.Sign(_speedX);
+            transform.localScale = scale;
+        }
+
         // Set the SpeedX parameter based on the horizontal input
         animator.SetFloat("SpeedX", Mathf.Abs(_speedX));
 
@@ -95,13 +107,22 @@ public class PlayerController : MonoBehaviour
         return isGrounded; // Return the grounded status
     }
 
+    private void PlayerJump()
+    {
+        _rb.AddForce(new Vector2(0f, jumpForce));
+        if (!IsGrounded())
+            animator.SetBool("IsJumping", true);
+        else
+            animator.SetBool("IsJumping", false);
+    }
+
     private void ShowDebuging()
     {
         Debug.Log("Jumping :" + (animator.GetBool("IsJumping") ? "yes" : "no"));
         Debug.Log("Grounded: " + IsGrounded());
     }
 }
-    
+
 
 
 /*public class PlayerController : MonoBehaviour
@@ -137,7 +158,7 @@ public class PlayerController : MonoBehaviour
         float moveY = (isJumping ? _speedY * 10f * Time.deltaTime : 0);
 
         playerTransform.position = new Vector2(
-            playerTransform.position.x + moveX, 
+            playerTransform.position.x + moveX,
             playerTransform.position.y + moveY
             );
     }
@@ -181,7 +202,7 @@ public class PlayerController : MonoBehaviour
             playerCollider.size = new Vector2(playerCollider.size.x, 1.2f);
         }
         else
-        {   
+        {
             animator.SetBool("IsCrouching", false);
             playerCollider.offset = new Vector2(playerCollider.offset.x, 1f);
             playerCollider.size = new Vector2(playerCollider.size.x, 2f);
