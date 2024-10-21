@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
         ShowDebuging();
         HandleMovement();
         HandleAnimation();
-    }
+    } //
 
     private void HandleMovement()
     {
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         _rb.velocity = newPosition; // Update velocity for movement
 
         // Jumping
-        if (Input.GetKeyDown(KeyCode.Space) /*&& IsGrounded()*/) // Only jump if grounded
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) // Only jump if grounded
         {
             PlayerJump();
             _rb.AddForce(new Vector2(0f, jumpForce)); // Apply an upward force for jumping
