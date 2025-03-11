@@ -47,6 +47,7 @@ public class MainMenuScript : MonoBehaviour
     {
         for (int i = 0; i < levelButtons.Length; i++)
         {
+            Debug.Log("level buttons: " + levelButtons.Length + "\nlevel unlock: " + GameManagerScript.levelUnlock.Length);
             levelButtons[i].SetActive(GameManagerScript.levelUnlock[i]);
         }
     }

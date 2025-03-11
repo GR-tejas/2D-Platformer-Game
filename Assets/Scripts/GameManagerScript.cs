@@ -14,7 +14,7 @@ public enum SceneNumber
 
 public class GameManagerScript : MonoBehaviour
 {
-    public static bool[] levelUnlock = new bool[2]; 
+    public static bool[] levelUnlock = new bool[4]; 
 
     [SerializeField] CanvasScript canvasScript;
     
