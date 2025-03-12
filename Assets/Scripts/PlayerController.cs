@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
 
     public GameManagerScript _gameManager;
 
+    public AudioSource audioSource;
+    public AudioClip clip;
+
     private void Awake()
     {
         playerCollider = GetComponent<CapsuleCollider2D>();
@@ -109,6 +112,7 @@ public class PlayerController : MonoBehaviour
         var xVelocity = hori * speed;
         var finalVelocity = new Vector2(xVelocity, iniVelocity.y);
         _rigidbody.velocity = finalVelocity;
+        //PlayWalkSound();
 
         if (isJumping & _groundCheck.isGrounded() && !forceAdded) 
         {

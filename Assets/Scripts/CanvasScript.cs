@@ -3,17 +3,26 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+public enum LevelUIWindow
+{
+    GAME_OVER,
+    GAME_FINISH
+}
+
 public class CanvasScript : MonoBehaviour
 {
     public TextMeshProUGUI CollectablesCount;
     public TextMeshProUGUI LevelNum;
+
     GameObject gameOverWindow;
+    GameObject gameFinishWindow;
 
     [SerializeField] GameManagerScript gameManagerScript;
 
     private void Start()
     {
         gameOverWindow = transform.Find("GameOver").gameObject;
+        gameFinishWindow = transform.Find("GameFinish").gameObject;
     }
 
     public void CollectablesCountUpdate(int count)
@@ -26,9 +35,17 @@ public class CanvasScript : MonoBehaviour
         LevelNum.text = "Level: " + levelNumber;
     }
 
-    public void ToggleGameOverUI(bool choice)
+    public void ToggleLevelUI(LevelUIWindow window, bool choice)
     {
-        gameOverWindow.SetActive(choice);
+        switch(window)
+        {
+            case LevelUIWindow.GAME_OVER:
+                gameOverWindow.SetActive(choice);
+                break;
+            case LevelUIWindow.GAME_FINISH:
+                gameFinishWindow.SetActive(choice);
+                break;
+        }
     }
 
     public void OnButtonClick(int buttonNum)

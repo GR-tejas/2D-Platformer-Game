@@ -26,7 +26,8 @@ public class GameManagerScript : MonoBehaviour
     {
         LevelNumber = SceneManager.GetActiveScene().buildIndex;
         canvasScript.LevelNumberUpdate(LevelNumber);
-        canvasScript.ToggleGameOverUI(false);
+        canvasScript.ToggleLevelUI(LevelUIWindow.GAME_OVER, false);
+        canvasScript.ToggleLevelUI(LevelUIWindow.GAME_FINISH, false);
     }
 
     public void OnLevelComplete()
@@ -42,6 +43,7 @@ public class GameManagerScript : MonoBehaviour
         else
         {
             Debug.Log("You have finished the game!");
+            canvasScript.ToggleLevelUI(LevelUIWindow.GAME_FINISH, true);
         }
     }
 
@@ -65,7 +67,7 @@ public class GameManagerScript : MonoBehaviour
     public void KillPlayer()
     {
         Debug.Log("You died!");
-        canvasScript.ToggleGameOverUI(true);
+        canvasScript.ToggleLevelUI(LevelUIWindow.GAME_OVER ,true);
     }
 
     public void IncreaseCount(int CountIndex)
