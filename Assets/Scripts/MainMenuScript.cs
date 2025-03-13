@@ -9,8 +9,7 @@ public class MainMenuScript : MonoBehaviour
     public GameObject levelSelectWindow;
     public GameObject[] levelButtons;
 
-    public AudioSource audioSource;
-    public AudioClip clip;
+    public GameObject test;
 
     private void Start()
     {
@@ -18,10 +17,16 @@ public class MainMenuScript : MonoBehaviour
         levelSelectWindow.SetActive(false);
         GameManagerScript.levelUnlock[0] = true;
         IsLevelUnlock();
-
-        if (audioSource == null)
-            Debug.LogError("AudioSource component is missing on " + gameObject.name);
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.H))
+        {
+            test.SetActive(true);
+        }
+    }
+
     public void OnButtonClicked(int buttonIndex)
     {
         PlayButtonSound();
@@ -65,15 +70,15 @@ public class MainMenuScript : MonoBehaviour
         }
     }
 
+    public void BackButton()
+    {
+        PlayButtonSound();
+        mainWindow.SetActive(true);
+        levelSelectWindow.SetActive(false);
+    }
+
     public void PlayButtonSound()
     {
-        if (audioSource != null && clip != null)
-        {
-            audioSource.PlayOneShot(clip);
-        }
-        else
-        {
-            Debug.LogError("AudioSource or AudioClip is missing!");
-        }
+        SoundManagerScript.Instance.PlayUIButtonClip();
     }
 }

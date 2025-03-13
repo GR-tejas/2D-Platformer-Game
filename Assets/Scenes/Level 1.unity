@@ -612,7 +612,7 @@ MonoBehaviour:
   wayPoints:
   - {fileID: 1270762473}
   - {fileID: 293738395}
-  chomperSpeed: 0.01
+  chomperSpeed: 0.005
 --- !u!61 &330165670
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1734,6 +1734,11 @@ PrefabInstance:
     - target: {fileID: 7024570558371178371, guid: 3e406d3880245b542bb13be69be3c9a8,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8057658483489529803, guid: 3e406d3880245b542bb13be69be3c9a8,
+        type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

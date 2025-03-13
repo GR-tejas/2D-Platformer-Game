@@ -5,6 +5,7 @@ using UnityEngine;
 public class TriggerDetection : MonoBehaviour
 {
     public GameManagerScript gameManagerScript;
+    public PlayerController player_Controller;
     public void TriggerResponse(string tag)
     {
         if (tag == "Finish")
@@ -15,6 +16,7 @@ public class TriggerDetection : MonoBehaviour
         if (tag == "KillPlayer")
         {
             gameManagerScript.KillPlayer();
+            player_Controller.KillPlayer();
         }
 
         if(tag == "Collectable")

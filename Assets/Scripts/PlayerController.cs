@@ -22,8 +22,7 @@ public class PlayerController : MonoBehaviour
 
     public GameManagerScript _gameManager;
 
-    public AudioSource audioSource;
-    public AudioClip clip;
+    bool isPlayerAlive;
 
     private void Awake()
     {
@@ -33,16 +32,20 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         initOffset = playerCollider.offset;
         initSize = playerCollider.size;
+        isPlayerAlive = true;
     }
     bool isJumping = false;
 
     private void Update()
     {
+        if(!isPlayerAlive) { return; }
+
         float HoriInput = Input.GetAxisRaw("Horizontal");
         float VerInput = Input.GetAxisRaw("Vertical");
 
         PlayerMoveAnimation(HoriInput, VerInput);
         PlayerMove(HoriInput, VerInput);
+        PlayWalkSound(HoriInput);
 
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
@@ -52,8 +55,6 @@ public class PlayerController : MonoBehaviour
         {
             PlayerCrouch(false);
         }
-
-
     }
 
     void PlayerMoveAnimation(float HoriInput, float VerInput)
@@ -112,7 +113,6 @@ public class PlayerController : MonoBehaviour
         var xVelocity = hori * speed;
         var finalVelocity = new Vector2(xVelocity, iniVelocity.y);
         _rigidbody.velocity = finalVelocity;
-        //PlayWalkSound();
 
         if (isJumping & _groundCheck.isGrounded() && !forceAdded) 
         {
@@ -137,6 +137,22 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+    }
 
+    public void KillPlayer()
+    {
+        isPlayerAlive = false;
+    }
+
+    public void PlayWalkSound(float HoriInput)
+    {
+        if(Mathf.Abs(HoriInput) > 0 && _groundCheck.isGrounded())
+        {
+            SoundManagerScript.Instance.PlayRunSound();
+        }
+        else
+        {
+            SoundManagerScript.Instance.StopRunSound();
+        }
     }
 }
