@@ -5,24 +5,24 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] Animator anim;
-    [SerializeField] float speed;
-    [SerializeField] float jumpForce;
+    [SerializeField] private Animator anim;
+    [SerializeField] private float speed;
+    [SerializeField] private float jumpForce;
 
     [Header("Crouch settings")]
-    [SerializeField] Vector2 crouchSize;
-    [SerializeField] Vector2 crouchOffset;
-    Vector2 initSize;
-    Vector2 initOffset;
-    CapsuleCollider2D playerCollider;
+    [SerializeField] private Vector2 crouchSize;
+    [SerializeField] private Vector2 crouchOffset;
+    private Vector2 initSize;
+    private Vector2 initOffset;
+    private CapsuleCollider2D playerCollider;
 
-    TriggerDetection _triggerDetection;
-    GroundCheck _groundCheck;
-    Rigidbody2D _rigidbody;
+    private TriggerDetection _triggerDetection;
+    private GroundCheck _groundCheck;
+    private Rigidbody2D _rigidbody;
 
     public GameManagerScript _gameManager;
 
-    bool isPlayerAlive;
+    private bool isPlayerAlive;
 
     private void Awake()
     {
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         initSize = playerCollider.size;
         isPlayerAlive = true;
     }
-    bool isJumping = false;
+    private bool isJumping = false;
 
     private void Update()
     {
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void PlayerMoveAnimation(float HoriInput, float VerInput)
+    private void PlayerMoveAnimation(float HoriInput, float VerInput)
     {
         anim.SetFloat("Speed", Mathf.Abs(HoriInput));
 
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void PlayerCrouch(bool crouchInput)
+    private void PlayerCrouch(bool crouchInput)
     {
         if (crouchInput)
         {
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void PlayerMove(float hori, float ver)
+    private void PlayerMove(float hori, float ver)
     {
         /*var position = transform.position;
         position.x += hori * Time.deltaTime * speed;
@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    bool forceAdded = false;
+    private bool forceAdded = false;
 
     void ResetJumpForce()
     {

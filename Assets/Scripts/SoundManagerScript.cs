@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SoundManagerScript : MonoBehaviour
 {
-    [SerializeField] AudioClip buttonClick;
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioSource runSource;
+    [SerializeField] private AudioClip buttonClick;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource runSource;
     public static SoundManagerScript Instance { get; private set; }
 
     private void Awake()

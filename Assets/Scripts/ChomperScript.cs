@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class ChomperScript : MonoBehaviour
 {
-    [SerializeField] Transform[] wayPoints;
+    [SerializeField] private Transform[] wayPoints;
 
-    [SerializeField] float chomperSpeed;
+    [SerializeField] private float chomperSpeed;
 
-    int wayPointIndex = 0;
+    private int wayPointIndex = 0;
 
     private void Update()
     {
         ChomperMove();
     }
 
-    void ChomperMove()
+    private void ChomperMove()
     {
         if(Vector2.Distance(transform.position, wayPoints[wayPointIndex].position) > 0.01f)
         {

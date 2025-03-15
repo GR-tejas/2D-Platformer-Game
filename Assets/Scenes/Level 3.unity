@@ -249,10 +249,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2130561866, guid: 05807412943f4404b88f61ab4bfea5cf, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1601557865993830095, guid: 05807412943f4404b88f61ab4bfea5cf,
         type: 3}
       propertyPath: gameManagerScript
@@ -262,11 +258,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 3406476863979325059, guid: 05807412943f4404b88f61ab4bfea5cf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3986262168792348635, guid: 05807412943f4404b88f61ab4bfea5cf,
         type: 3}

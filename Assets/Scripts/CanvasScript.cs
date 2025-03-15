@@ -14,15 +14,14 @@ public class CanvasScript : MonoBehaviour
     public TextMeshProUGUI CollectablesCount;
     public TextMeshProUGUI LevelNum;
 
-    GameObject gameOverWindow;
-    GameObject gameFinishWindow;
+    [SerializeField] private GameObject gameOverWindow;
+    [SerializeField] private GameObject gameFinishWindow;
 
     [SerializeField] GameManagerScript gameManagerScript;
 
     private void Start()
     {
-        gameOverWindow = transform.Find("GameOver").gameObject;
-        gameFinishWindow = transform.Find("GameFinish").gameObject;
+        
     }
 
     public void CollectablesCountUpdate(int count)

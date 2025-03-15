@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-
 public enum SceneNumber
 {
     MAIN_MENU,
@@ -16,11 +14,11 @@ public class GameManagerScript : MonoBehaviour
 {
     public static bool[] levelUnlock = new bool[4]; 
 
-    [SerializeField] CanvasScript canvasScript;
-    
+    [SerializeField] private CanvasScript canvasScript;
 
-    int CollectablesCount = 0;
-    int LevelNumber;
+
+    private int CollectablesCount = 0;
+    private int LevelNumber;
 
     private void Start()
     {

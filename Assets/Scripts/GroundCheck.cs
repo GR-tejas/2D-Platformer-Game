@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-    [SerializeField] float groundCheckDepth = 1;
-    [SerializeField] float sensorWidth = .5f;
-    [SerializeField] Vector2 sensorOffset;
-    [SerializeField] LayerMask groundMask;
+    [SerializeField] private float groundCheckDepth = 1;
+    [SerializeField] private float sensorWidth = .5f;
+    [SerializeField] private Vector2 sensorOffset;
+    [SerializeField] private LayerMask groundMask;
 
 
     public bool isGrounded()

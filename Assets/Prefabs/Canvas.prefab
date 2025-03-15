@@ -1707,6 +1707,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollectablesCount: {fileID: 8448232813311353337}
   LevelNum: {fileID: 6081846946847592600}
+  gameOverWindow: {fileID: 2130561866}
+  gameFinishWindow: {fileID: 1214104641}
   gameManagerScript: {fileID: 0}
 --- !u!1 &4166696252820033533
 GameObject:
